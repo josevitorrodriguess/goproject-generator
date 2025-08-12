@@ -1,0 +1,24 @@
+const mainGoTemplate = `
+package main
+
+import (
+	"log"
+	"net/http"
+	"{{.Module}}/internal/api"
+
+	"github.com/joho/godotenv"
+)
+
+func main() {
+	godotenv.Load()
+
+	api := api.New()
+
+	addr := ":3050"
+
+	(log.Printf("Server is running on  http://localhost%s\n", addr))
+	if err := http.ListenAndServe(addr, api.Router); err != nil {
+		log.Fatalf("Error to initialize server: %v", err)
+	}
+}
+`

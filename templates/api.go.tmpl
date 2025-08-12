@@ -1,0 +1,23 @@
+const apiGoTemplate = `
+package api
+
+import (
+	"github.com/go-chi/chi/v5"
+)
+
+type Api struct {
+	Router *chi.Mux
+}
+
+func New() *Api {
+	api := &Api{}
+	api.Init()
+	return api
+}
+
+func (api *Api) Init() {
+	api.Router = chi.NewRouter()
+	api.setupMiddleware()
+	api.setupRoutes()
+}
+`
