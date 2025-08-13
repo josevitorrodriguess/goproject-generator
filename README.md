@@ -40,19 +40,19 @@ go build -o gpg main.go
 ### Comando básico
 
 ```bash
-gpg create meu-projeto
+goproject-generator create meu-projeto
 ```
 
 ### Com opções personalizadas
 
 ```bash
-gpg create minha-api --port 8080 --module github.com/usuario/minha-api
+goproject-generator create minha-api --port 8080 --module github.com/usuario/minha-api
 ```
 
 ### Flags disponíveis
 
 ```bash
-gpg create --help
+goproject-generator create --help
 ```
 
 ## ⚙️ Opções disponíveis
