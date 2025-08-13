@@ -16,7 +16,7 @@ type ProjectConfig struct {
 
 func CreateProject(config ProjectConfig) error {
 	if err := os.MkdirAll(config.Name, 0755); err != nil {
-		return fmt.Errorf("Failed to create project directory: %v", err)
+		return fmt.Errorf("failed to create project directory: %v", err)
 	}
 
 	dirs := []string{
@@ -27,7 +27,7 @@ func CreateProject(config ProjectConfig) error {
 
 	for _, dir := range dirs {
 		if err := os.MkdirAll(dir, 0755); err != nil {
-			return fmt.Errorf("Failed to create project directory: %v", err)
+			return fmt.Errorf("failed to create project directory: %v", err)
 		}
 	}
 
@@ -75,15 +75,16 @@ func createFromTemplates(config ProjectConfig) error {
 }
 
 func installDependencies(projectName string) error {
-	cmd := exec.Command("go", "get", "github.com/go-chi/chi/v5",
-		"go", "get", "github.com/go-chi/chi/",
-		"go", "get", "github.com/go-chi/cors",
-		"go", "get", "github.com/joho/godotenv")
+	cmd := exec.Command("go", "get",
+		"github.com/go-chi/chi/v5",
+		"github.com/go-chi/chi/",
+		"github.com/go-chi/cors",
+		"github.com/joho/godotenv")
 
 	cmd.Dir = projectName
 
 	if err := cmd.Run(); err != nil {
-		return fmt.Errorf("erro ao instalar dependências: %v", err)
+		return fmt.Errorf("erro install dependencies: %v", err)
 	}
 
 	return nil
